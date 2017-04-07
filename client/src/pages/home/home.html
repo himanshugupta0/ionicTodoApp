@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      TodoPage
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      <h2>Todo List</h2>
+    </ion-list-header>
+
+    <ion-item *ngFor="let message of messages">
+        {{message.message}}
+      <button ion-button color="dark" clear (click)="enableEditing(message)">Edit</button>
+      <button ion-button color="danger" clear (click)="deleteTodo(message)">Delete</button>
+    </ion-item>
+
+  </ion-list>
+
+    <div *ngIf="isEditing">
+      <form (ngSubmit)="editTodo(editMsg)">
+        <div class="form-group">
+          <input type="text" class="form-control" name="msg" [(ngModel)]="editMsg"/>
+        </div>
+          <button type="submit" ion-button color="blue" outline round>Save</button>
+      </form>
+      <button type="submit" ion-button color="blue" outline round (click)="cancelEditing()">Cancel</button>
+    </div>
+
+    <div *ngIf="!isEditing">
+      <form (ngSubmit)="addTodo()" [formGroup]="addTodoForm">
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="msg" name="msg"/>
+        </div>
+          <button type="submit" [disabled]="!addTodoForm.valid" ion-button color="blue" outline round>SEND</button>
+      </form>
+    </div>
+</ion-content>

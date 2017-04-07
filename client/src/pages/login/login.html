@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form (ngSubmit)="onSubmit(username)">
+    <ion-item>
+      <ion-label color="primary" floating>Username</ion-label>
+      <ion-input type="text" name="username" [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <button ion-button color="blue" outline round>ENTER</button>
+  </form>
+  
+</ion-content>
